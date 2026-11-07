@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curling Stats — curling game statistics</title>
+<meta name="description" content="An app for curling coaches: record every shot, replay ends, see team statistics and export a PDF report. Free version for Windows.">
+<link rel="canonical" href="https://curlingstats.ru/en/">
+<link rel="alternate" hreflang="ru" href="https://curlingstats.ru/">
+<link rel="alternate" hreflang="en" href="https://curlingstats.ru/en/">
+<meta property="og:title" content="Curling Stats — the whole game in one place">
+<meta property="og:description" content="Record shots, replay ends and see team statistics.">
+<meta property="og:image" content="https://curlingstats.ru/assets/icon-512.png">
+<meta property="og:url" content="https://curlingstats.ru/en/">
+<meta name="theme-color" content="#F7F5F0">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/icon-96.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.className='js'</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#top"><img src="../assets/icon-96.png" alt="" width="30" height="30">Curling Stats</a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#features">Features</a>
+    <a href="#prices">Pricing</a>
+    <a href="#delivery">Delivery and refunds</a>
+    <a href="#contacts">Contact</a>
+  </nav>
+  <div class="lang"><a href="../" hreflang="ru" lang="ru">RU</a><span aria-current="true">EN</span></div>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>The whole game in&nbsp;one place</h1>
+    <p class="lead">Record every shot, review each end and see your team's statistics. No notebooks, no spreadsheets.</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/Grovlyd/curlingstats-site/releases/latest/download/CurlingStats_Setup.exe">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 9 10 13.5 14.5 9M4 17h12"/></svg>
+        Download for Windows
+      </a>
+      <span class="soon">Android: coming to RuStore</span>
+    </div>
+    <p class="fine">Free · Windows 10 and 11 · 15 MB</p>
+    <p class="hint">If Windows shows a blue warning, click “More info”, then “Run anyway”.</p>
+  </div>
+  <figure class="live" style="margin-block:0">
+    <canvas id="sheet" role="img" aria-label="Animation: stones travel down the ice to the house and each shot gets a score from 0 to 4"></canvas>
+    <figcaption class="hud">
+      <div class="hud-top" id="hud-shot">End 5 · 9/16</div>
+      <div class="hud-row"><i id="hud-dot"></i><span id="hud-who">Third · Come-around · In-turn</span></div>
+      <div class="rate" aria-hidden="true"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></div>
+    </figcaption>
+  </figure>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <h2 class="section-title reveal">From the first stone to the team review</h2>
+
+  <article class="chapter reveal">
+    <div class="text">
+      <div class="kicker">Record</div>
+      <h3>Every shot in a few taps</h3>
+      <p>Place the broom and the target, then mark where the stone stopped. The app works out the shot type and the turn and suggests a score. You can correct it at any time.</p>
+      <ul>
+        <li>Classic curling and mixed doubles</li>
+        <li>Score from 0 to 4 by distance to the target</li>
+        <li>A flag and a comment on any shot</li>
+      </ul>
+    </div>
+    <div class="media single"><div class="shot"><img src="../assets/shots/record-board.webp" width="511" height="904" loading="lazy" alt="The sheet in the app with stones, broom and target"></div></div>
+  </article>
+
+  <article class="chapter flip reveal">
+    <div class="text">
+      <div class="kicker">Replay</div>
+      <h3>Walk through any end again</h3>
+      <p>Stones move and collide on screen, shot by shot. Next to each one you see who threw it, the score and what you flagged during the game.</p>
+      <ul>
+        <li>Any end of any game</li>
+        <li>Miss reasons next to the shot</li>
+      </ul>
+    </div>
+    <div class="media single"><div class="shot"><img src="../assets/shots/replay-board.webp" width="612" height="990" loading="lazy" alt="Replay of an end with the path of a stone on the sheet"></div></div>
+  </article>
+
+  <article class="chapter reveal">
+    <div class="text">
+      <div class="kicker">Statistics</div>
+      <h3>See where the team wins points and&nbsp;where it loses them</h3>
+      <p>Percentages by player, position and shot type, per end and per game. The map shows where stones stopped and how accurate each shot was.</p>
+      <ul>
+        <li>Team against team</li>
+        <li>Player against player</li>
+      </ul>
+    </div>
+    <div class="media single"><div class="shot"><img src="../assets/shots/map-board.webp" width="800" height="936" loading="lazy" alt="Map of the house: dots show where stones stopped, the colour shows the shot score"></div></div>
+  </article>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap also reveal">
+  <div class="head"><h2 class="section-title" style="font-size:clamp(28px,3.2vw,42px)">Also included</h2></div>
+  <dl>
+    <div><dt>Ice by sheet</dt><dd>How the ice behaves at each venue and on each sheet.</dd></div>
+    <div><dt>PDF report</dt><dd>A ready report to go through the game with your team.</dd></div>
+    <div><dt>Coach board</dt><dd>A sheet, stones and a broom for talking tactics.</dd></div>
+    <div><dt>Works offline</dt><dd>Games are stored on your device.</dd></div>
+    <div><dt>English and Russian</dt><dd>Switch the language in the app.</dd></div>
+  </dl>
+</div></section>
+
+<section class="section band" id="prices"><div class="wrap">
+  <h2 class="section-title reveal">Start for free</h2>
+  <div class="plans reveal">
+    <div class="plan"><span>1 month</span><strong>199 ₽</strong><em>199 ₽ per month</em></div>
+    <div class="plan best"><u>Best value</u><span>1 year</span><strong>1,490 ₽</strong><em>≈ 124 ₽ per month</em></div>
+    <div class="plan"><span>6 months</span><strong>1,190 ₽</strong><em>≈ 198 ₽ per month</em></div>
+  </div>
+  <div class="compare-wrap reveal">
+    <table class="compare">
+      <thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead>
+      <tbody>
+        <tr><td>Games</td><td>2</td><td>Unlimited</td></tr>
+        <tr><td>Players</td><td>8</td><td>Unlimited</td></tr>
+        <tr><td>Teams</td><td>2</td><td>Unlimited</td></tr>
+        <tr><td>Statistics, replay, PDF</td><td>for 2 games</td><td>for all games</td></tr>
+      </tbody>
+    </table>
+    <div class="steps">
+      <h3>How to get Premium</h3>
+      <ol>
+        <li>Install the app and sign up with your email and a password. A confirmation code will arrive by email.</li>
+        <li>Open “Premium”, choose a period and tap the button to continue.</li>
+        <li>Pay on the YooKassa page and return to the app. Premium turns on automatically.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="pay-note">One-time payment for the chosen period, with no automatic renewal. Prices are in Russian rubles, the payment is processed by YooKassa, and the terms are in Russian: <a href="../offer.html">public offer</a>.</p>
+</div></section>
+
+<section class="section"><div class="wrap terms">
+  <div id="delivery">
+    <h2>Delivery and refunds</h2>
+    <p><b>This is a digital service, nothing is shipped.</b> Premium turns on automatically in your account on every device where you are signed in, usually within a few minutes after payment. If it does not, write to <a href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a> with your account email and the payment date.</p>
+    <p><b>Refunds.</b> You can cancel at any time. We refund the unused part of the paid period within 10 days to the card or account used for payment. Full terms are in the <a href="../offer.html">public offer</a> (in Russian).</p>
+  </div>
+  <div id="contacts">
+    <h2>Contact</h2>
+    <p>Questions about the app, payment and refunds:</p>
+    <p><a class="mail" href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a></p>
+    <p>Provider: Volkov Egor Igorevich, self-employed, Russia, tax ID (INN) 722410964276.</p>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Curling Stats</span>
+  <nav aria-label="Documents">
+    <a href="../offer.html">Public offer (RU)</a>
+    <a href="../privacy.html">Privacy policy (RU)</a>
+    <a href="mailto:curlingstats@yandex.ru">Support</a>
+  </nav>
+</div></footer>
+<script src="../app.js"></script>
+</body>
+</html>

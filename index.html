@@ -4,72 +4,168 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Curling Stats — статистика игр по керлингу</title>
-<meta name="description" content="Curling Stats: приложение для тренеров и игроков по керлингу. Записывайте броски, смотрите статистику, повтор и лёд по дорожкам.">
+<meta name="description" content="Приложение для тренеров по керлингу: запись бросков, повтор эндов, статистика команды и PDF-отчёт. Бесплатная версия для Windows.">
+<link rel="canonical" href="https://curlingstats.ru/">
+<link rel="alternate" hreflang="ru" href="https://curlingstats.ru/">
+<link rel="alternate" hreflang="en" href="https://curlingstats.ru/en/">
+<meta property="og:title" content="Curling Stats — вся игра в одном месте">
+<meta property="og:description" content="Запись бросков, повтор эндов и статистика команды.">
+<meta property="og:image" content="https://curlingstats.ru/assets/icon-512.png">
+<meta property="og:url" content="https://curlingstats.ru/">
+<meta name="theme-color" content="#F7F5F0">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/icon-96.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.className='js'</script>
 </head>
 <body>
-<header class="hero"><div class="wrap">
-  <h1>Curling Stats</h1>
-  <p>Статистика игр по керлингу для тренеров и игроков. Записывайте каждый бросок и находите, где команда выигрывает очки, а где теряет.</p>
-  <p><a class="btn" href="https://github.com/Grovlyd/curlingstats-site/releases/latest/download/CurlingStats_Setup.exe">Скачать для Windows</a></p>
-  <p class="small">Установщик для Windows 10 и 11, около 15 МБ. Если Windows покажет окно «Защитник Windows предотвратил запуск», нажмите «Подробнее», затем «Выполнить в любом случае».</p>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#top"><img src="assets/icon-96.png" alt="" width="30" height="30">Curling Stats</a>
+  <nav class="site-nav" aria-label="Разделы">
+    <a href="#features">Возможности</a>
+    <a href="#prices">Тарифы</a>
+    <a href="#delivery">Получение и возврат</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <div class="lang"><span aria-current="true">RU</span><a href="en/" hreflang="en" lang="en">EN</a></div>
 </div></header>
-<nav class="top"><div class="wrap">
-  <span class="brand">Curling Stats</span>
-  <a href="#features">Возможности</a>
-  <a href="#prices">Тарифы</a>
-  <a href="#delivery">Получение и возврат</a>
-  <a href="#contacts">Контакты</a>
-</div></nav>
-<main><div class="wrap">
 
-<h2 id="features">Что умеет приложение</h2>
-<div class="grid">
-  <div class="card"><b>Запись игры</b>Бросок за броском: щётка, цель, результат. Классический керлинг и смешанные пары.</div>
-  <div class="card"><b>Статистика</b>Проценты по игрокам, позициям и типам бросков, сравнение команд, тепловые карты.</div>
-  <div class="card"><b>Лёд по дорожкам</b>Как ведёт себя лёд на каждом стадионе и дорожке.</div>
-  <div class="card"><b>Повтор игры</b>Разбор эндов бросок за броском с анимацией камней.</div>
-  <div class="card"><b>PDF-отчёты</b>Готовый отчёт по игре, чтобы разобрать её с командой.</div>
-  <div class="card"><b>Тренерская доска</b>Площадка, камни и щётка, чтобы обсудить тактику.</div>
-</div>
-<p class="muted">Приложение работает без интернета. Игры хранятся на вашем устройстве. Для Android и Windows.</p>
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>Вся игра в&nbsp;одном месте</h1>
+    <p class="lead">Записывайте каждый бросок, разбирайте энды и смотрите статистику команды. Без тетрадей и таблиц.</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/Grovlyd/curlingstats-site/releases/latest/download/CurlingStats_Setup.exe">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 9 10 13.5 14.5 9M4 17h12"/></svg>
+        Скачать для Windows
+      </a>
+      <span class="soon">Android: скоро в RuStore</span>
+    </div>
+    <p class="fine">Бесплатно · Windows 10 и 11 · 15 МБ</p>
+    <p class="hint">Если Windows покажет синее окно, нажмите «Подробнее», затем «Выполнить в любом случае».</p>
+  </div>
+  <figure class="live" style="margin-block:0">
+    <canvas id="sheet" role="img" aria-label="Анимация: камни движутся по льду к дому, каждый бросок получает оценку от 0 до 4"></canvas>
+    <figcaption class="hud">
+      <div class="hud-top" id="hud-shot">Энд 5 · 9/16</div>
+      <div class="hud-row"><i id="hud-dot"></i><span id="hud-who">Третий · Come-around · In-turn</span></div>
+      <div class="rate" aria-hidden="true"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></div>
+    </figcaption>
+  </figure>
+</div></section>
 
-<h2 id="prices">Бесплатная версия и Премиум</h2>
-<table>
-  <tr><th></th><th>Бесплатно</th><th>Премиум</th></tr>
-  <tr><td>Игры</td><td>2</td><td>Без лимита</td></tr>
-  <tr><td>Игроки</td><td>8</td><td>Без лимита</td></tr>
-  <tr><td>Команды</td><td>2</td><td>Без лимита</td></tr>
-  <tr><td>Статистика, повтор, PDF</td><td>за 2 игры</td><td>за все игры</td></tr>
-</table>
+<section id="features"><div class="wrap">
+  <h2 class="section-title reveal">От первого броска до разбора с&nbsp;командой</h2>
 
-<h3>Тарифы Премиума</h3>
-<div class="grid">
-  <div class="card price"><b>1 месяц</b><div class="sum">199 ₽</div><div class="note">199 ₽ в месяц</div></div>
-  <div class="card price"><b>6 месяцев</b><div class="sum">1 190 ₽</div><div class="note">≈ 198 ₽ в месяц</div></div>
-  <div class="card price best"><b>1 год</b><div class="sum">1 490 ₽</div><div class="note">≈ 124 ₽ в месяц</div></div>
-</div>
-<p class="muted">Разовая оплата на выбранный срок, без автоматического продления. Новый срок добавляется к текущему. Оплата банковской картой или через СБП, платёж принимает ЮKassa. Чек отправляется на почту аккаунта. Условия — в <a href="offer.html">публичной оферте</a>.</p>
+  <article class="chapter reveal">
+    <div class="text">
+      <div class="kicker">Запись</div>
+      <h3>Каждый бросок за несколько касаний</h3>
+      <p>Поставьте щётку и цель, отметьте, где остановился камень. Приложение определит тип броска и вращение и предложит оценку. Поправить можно в любой момент.</p>
+      <ul>
+        <li>Классический керлинг и смешанные пары</li>
+        <li>Оценка от 0 до 4 по расстоянию до цели</li>
+        <li>Отметка и комментарий к любому броску</li>
+      </ul>
+    </div>
+    <div class="media single"><div class="shot"><img src="assets/shots/record.webp" width="720" height="1280" loading="lazy" alt="Экран записи броска: дом, камни и оценка от 0 до 4"></div></div>
+  </article>
 
-<h2>Как оформить Премиум</h2>
-<ol>
-  <li>Установите приложение и зарегистрируйтесь по почте и паролю. На почту придёт код подтверждения.</li>
-  <li>Откройте раздел «Премиум», выберите срок и нажмите «Оформить».</li>
-  <li>Оплатите на странице ЮKassa. После оплаты вернитесь в приложение, Премиум включится автоматически.</li>
-</ol>
+  <article class="chapter flip reveal">
+    <div class="text">
+      <div class="kicker">Повтор</div>
+      <h3>Энд можно пройти заново</h3>
+      <p>Камни двигаются и сталкиваются на экране бросок за броском. Рядом видно, кто бросал, какой была оценка и что вы отметили во время игры.</p>
+      <ul>
+        <li>Любой энд любой игры</li>
+        <li>Причины промахов рядом с броском</li>
+      </ul>
+    </div>
+    <div class="media single"><div class="shot"><img src="assets/shots/replay.webp" width="720" height="1280" loading="lazy" alt="Экран повтора: бросок 14 из 16 с оценкой и причиной промаха"></div></div>
+  </article>
 
-<h2 id="delivery">Получение услуги и возврат</h2>
-<p><b>Это цифровая услуга, физической доставки нет.</b> Премиум включается автоматически в вашем аккаунте на всех устройствах, где вы вошли, обычно в течение нескольких минут после оплаты. Ничего получать и пересылать не нужно. Если Премиум не включился, напишите нам на <a href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a> с адресом почты аккаунта и датой оплаты.</p>
-<p><b>Возврат.</b> От услуги можно отказаться в любое время: вернём стоимость неиспользованной части оплаченного срока на карту или счёт, с которых была оплата, в течение 10 дней. Подробные условия — в <a href="offer.html">публичной оферте</a>.</p>
+  <article class="chapter reveal">
+    <div class="text">
+      <div class="kicker">Статистика</div>
+      <h3>Видно, где команда выигрывает очки, а&nbsp;где теряет</h3>
+      <p>Проценты по игрокам, позициям и типам бросков, по эндам и по всей игре. На карте видно, где останавливались камни и насколько точным был каждый бросок.</p>
+      <ul>
+        <li>Сравнение двух команд</li>
+        <li>Сравнение двух игроков</li>
+      </ul>
+    </div>
+    <div class="media pair">
+      <div class="shot"><img src="assets/shots/stats.webp" width="720" height="1280" loading="lazy" alt="Сводка игры: счёт по эндам и сравнение команд в процентах"></div>
+      <div class="shot"><img src="assets/shots/map.webp" width="720" height="1280" loading="lazy" alt="Карта: точки остановки камней в доме, цвет показывает оценку броска"></div>
+    </div>
+  </article>
+</div></section>
 
-<h2 id="contacts">Контакты и реквизиты</h2>
-<p>Вопросы по работе приложения, оплате и возврату: <a href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a></p>
-<p class="muted">Исполнитель: Волков Егор Игоревич, самозанятый (плательщик налога на профессиональный доход), ИНН 722410964276.</p>
-</div></main>
-<footer><div class="wrap">
-  <a href="offer.html">Публичная оферта</a>
-  <a href="privacy.html">Политика конфиденциальности</a>
-  <a href="mailto:curlingstats@yandex.ru">Поддержка</a>
+<section class="section" style="padding-top:0"><div class="wrap also reveal">
+  <div class="head"><h2 class="section-title" style="font-size:clamp(28px,3.2vw,42px)">И&nbsp;ещё</h2></div>
+  <dl>
+    <div><dt>Лёд по дорожкам</dt><dd>Как ведёт себя лёд на каждом стадионе и дорожке.</dd></div>
+    <div><dt>PDF-отчёт</dt><dd>Готовый отчёт по игре, чтобы разобрать её с командой.</dd></div>
+    <div><dt>Тренерская доска</dt><dd>Площадка, камни и щётка, чтобы обсудить тактику.</dd></div>
+    <div><dt>Без интернета</dt><dd>Игры хранятся на вашем устройстве.</dd></div>
+    <div><dt>Русский и английский</dt><dd>Язык переключается в приложении.</dd></div>
+  </dl>
+</div></section>
+
+<section class="section band" id="prices"><div class="wrap">
+  <h2 class="section-title reveal">Начать можно бесплатно</h2>
+  <div class="plans reveal">
+    <div class="plan"><span>1 месяц</span><strong>199 ₽</strong><em>199 ₽ в месяц</em></div>
+    <div class="plan best"><u>Выгоднее всего</u><span>1 год</span><strong>1 490 ₽</strong><em>≈ 124 ₽ в месяц</em></div>
+    <div class="plan"><span>6 месяцев</span><strong>1 190 ₽</strong><em>≈ 198 ₽ в месяц</em></div>
+  </div>
+  <div class="compare-wrap reveal">
+    <table class="compare">
+      <thead><tr><th scope="col"></th><th scope="col">Бесплатно</th><th scope="col">Премиум</th></tr></thead>
+      <tbody>
+        <tr><td>Игры</td><td>2</td><td>Без лимита</td></tr>
+        <tr><td>Игроки</td><td>8</td><td>Без лимита</td></tr>
+        <tr><td>Команды</td><td>2</td><td>Без лимита</td></tr>
+        <tr><td>Статистика, повтор, PDF</td><td>за 2 игры</td><td>за все игры</td></tr>
+      </tbody>
+    </table>
+    <div class="steps">
+      <h3>Как оформить Премиум</h3>
+      <ol>
+        <li>Установите приложение и зарегистрируйтесь по почте и паролю. На почту придёт код подтверждения.</li>
+        <li>Откройте раздел «Премиум», выберите срок и нажмите «Оформить».</li>
+        <li>Оплатите на странице ЮKassa. После оплаты вернитесь в приложение, Премиум включится автоматически.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="pay-note">Разовая оплата на выбранный срок, без автоматического продления. Новый срок добавляется к текущему. Оплата банковской картой или через СБП, платёж принимает ЮKassa. Чек отправляется на почту аккаунта. Условия — в <a href="offer.html">публичной оферте</a>.</p>
+</div></section>
+
+<section class="section"><div class="wrap terms">
+  <div id="delivery">
+    <h2>Получение услуги и возврат</h2>
+    <p><b>Это цифровая услуга, физической доставки нет.</b> Премиум включается автоматически в вашем аккаунте на всех устройствах, где вы вошли, обычно в течение нескольких минут после оплаты. Ничего получать и пересылать не нужно. Если Премиум не включился, напишите нам на <a href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a> с адресом почты аккаунта и датой оплаты.</p>
+    <p><b>Возврат.</b> От услуги можно отказаться в любое время: вернём стоимость неиспользованной части оплаченного срока на карту или счёт, с которых была оплата, в течение 10 дней. Подробные условия — в <a href="offer.html">публичной оферте</a>.</p>
+  </div>
+  <div id="contacts">
+    <h2>Контакты и реквизиты</h2>
+    <p>Вопросы по работе приложения, оплате и возврату:</p>
+    <p><a class="mail" href="mailto:curlingstats@yandex.ru">curlingstats@yandex.ru</a></p>
+    <p>Исполнитель: Волков Егор Игоревич, самозанятый (плательщик налога на профессиональный доход), ИНН 722410964276.</p>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Curling Stats</span>
+  <nav aria-label="Документы">
+    <a href="offer.html">Публичная оферта</a>
+    <a href="privacy.html">Политика конфиденциальности</a>
+    <a href="mailto:curlingstats@yandex.ru">Поддержка</a>
+  </nav>
 </div></footer>
+<script src="app.js"></script>
 </body>
 </html>
