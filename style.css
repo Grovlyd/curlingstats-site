@@ -29,3 +29,6 @@ footer a { color:var(--deep); margin-right:16px; }
 a { color:var(--deep); }
 .legal h2 { margin-top: 28px; }
 .legal ol { padding-left: 22px; }
+.btn { display:inline-block; background:#fff; color:var(--deep); font-weight:800; text-decoration:none; padding:12px 26px; border-radius:12px; margin-top:8px; }
+.btn:hover { background:#f1eee8; }
+header.hero p.small { font-size:14px; opacity:.8; margin-top:6px; }
